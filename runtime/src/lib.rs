@@ -13,7 +13,8 @@ use pallet_grandpa::{
 	fg_primitives, AuthorityId as GrandpaId, AuthorityList as GrandpaAuthorityList,
 };
 use sp_api::impl_runtime_apis;
-use sp_consensus_aura::sr25519::AuthorityId as AuraId;
+// use sp_consensus_aura::sr25519::AuthorityId as AuraId;
+use sp_finality_grandpa::AuthorityId as AuraId;
 use sp_core::{crypto::KeyTypeId, OpaqueMetadata};
 use sp_runtime::{
 	create_runtime_str, generic, impl_opaque_keys,
@@ -80,7 +81,7 @@ pub mod opaque {
 
 	impl_opaque_keys! {
 		pub struct SessionKeys {
-			pub aura: Aura,
+			// pub aura: Aura,
 			pub grandpa: Grandpa,
 		}
 	}
@@ -241,12 +242,12 @@ parameter_types! {
 	pub const MaxAuthorities: u32 = 32;
 }
 
-impl pallet_aura::Config for Runtime {
-	type AuthorityId = AuraId;
-	type DisabledValidators = ();
-	type MaxAuthorities = MaxAuthorities;
-}
-
+// impl pallet_aura::Config for Runtime {
+// 	type AuthorityId = AuraId;
+// 	type DisabledValidators = ();
+// 	type MaxAuthorities = MaxAuthorities;
+// }
+//
 impl pallet_grandpa::Config for Runtime {
 	type Event = Event;
 	type Call = Call;
@@ -274,7 +275,7 @@ parameter_types! {
 impl pallet_timestamp::Config for Runtime {
 	/// A timestamp: milliseconds since the unix epoch.
 	type Moment = u64;
-	type OnTimestampSet = Aura;
+	type OnTimestampSet = Grandpa;
 	type MinimumPeriod = MinimumPeriod;
 	type WeightInfo = ();
 }
@@ -377,7 +378,7 @@ construct_runtime!(
 		System: frame_system,
 		RandomnessCollectiveFlip: pallet_randomness_collective_flip,
 		Timestamp: pallet_timestamp,
-		Aura: pallet_aura,
+		// Aura: pallet_aura,
 		Grandpa: pallet_grandpa,
 		Balances: pallet_balances,
 		TransactionPayment: pallet_transaction_payment,
@@ -471,14 +472,14 @@ impl_runtime_apis! {
 		}
 	}
 
-	impl sp_consensus_aura::AuraApi<Block, AuraId> for Runtime {
-		fn slot_duration() -> sp_consensus_aura::SlotDuration {
-			sp_consensus_aura::SlotDuration::from_millis(Aura::slot_duration())
+	impl sp_finality_grandpa::AuraApi<Block, AuraId> for Runtime {
+		fn slot_duration() -> sp_finality_grandpa::SlotDuration {
+			sp_finality_grandpa::SlotDuration::from_millis(Grandpa::slot_duration())
 		}
 
-		fn authorities() -> Vec<AuraId> {
-			Aura::authorities().into_inner()
-		}
+		// fn authorities() -> Vec<AuraId> {
+		// 	Aura::authorities().into_inner()
+		// }
 	}
 
 	impl sp_session::SessionKeys<Block> for Runtime {

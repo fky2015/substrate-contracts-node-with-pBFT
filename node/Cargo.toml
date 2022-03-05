@@ -20,45 +20,44 @@ path = "src/main.rs"
 [dependencies]
 clap = { version = "3.0", features = ["derive"] }
 
-sc-cli = { git = "https://github.com/paritytech/substrate", package = "sc-cli", features = ["wasmtime"] }
-sp-core = { git = "https://github.com/paritytech/substrate", package = "sp-core" }
-sc-executor = { git = "https://github.com/paritytech/substrate", package = "sc-executor", features = ["wasmtime"] }
-sc-service = { git = "https://github.com/paritytech/substrate", package = "sc-service", features = ["wasmtime"] }
-sc-telemetry = { git = "https://github.com/paritytech/substrate", package = "sc-telemetry" }
-sc-keystore = { git = "https://github.com/paritytech/substrate", package = "sc-keystore" }
-sp-inherents = { git = "https://github.com/paritytech/substrate", package = "sp-inherents" }
-sc-transaction-pool = { git = "https://github.com/paritytech/substrate", package = "sc-transaction-pool" }
-sc-transaction-pool-api = { git = "https://github.com/paritytech/substrate", package = "sc-transaction-pool-api" }
-sc-consensus-aura = { git = "https://github.com/paritytech/substrate", package = "sc-consensus-aura" }
-sp-consensus-aura = { git = "https://github.com/paritytech/substrate", package = "sp-consensus-aura" }
-sp-consensus = { git = "https://github.com/paritytech/substrate", package = "sp-consensus" }
-sc-consensus = { git = "https://github.com/paritytech/substrate", package = "sc-consensus" }
-sc-finality-grandpa = { git = "https://github.com/paritytech/substrate", package = "sc-finality-grandpa" }
-sp-finality-grandpa = { git = "https://github.com/paritytech/substrate", package = "sp-finality-grandpa" }
-sc-client-api = { git = "https://github.com/paritytech/substrate", package = "sc-client-api" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", package = "sp-runtime" }
-sp-timestamp = { git = "https://github.com/paritytech/substrate", package = "sp-timestamp" }
+sc-cli = { path = "../../bit-substrate/client/cli", package = "sc-cli", features = ["wasmtime"] }
+sp-core = { path = "../../bit-substrate/primitives/core", package = "sp-core" }
+sc-executor = { path = "../../bit-substrate/client/executor", package = "sc-executor", features = ["wasmtime"] }
+sc-service = { path = "../../bit-substrate/client/service", package = "sc-service", features = ["wasmtime"] }
+sc-telemetry = { path = "../../bit-substrate/client/telemetry", package = "sc-telemetry" }
+sc-keystore = { path = "../../bit-substrate/client/keystore", package = "sc-keystore" }
+sp-inherents = { path = "../../bit-substrate/primitives/inherents", package = "sp-inherents" }
+sc-transaction-pool = { path = "../../bit-substrate/client/transaction-pool", package = "sc-transaction-pool" }
+sc-transaction-pool-api = { path = "../../bit-substrate/client/transaction-pool/api", package = "sc-transaction-pool-api" }
+sc-consensus-aura = { path = "../../bit-substrate/client/consensus/aura", package = "sc-consensus-aura" }
+sp-consensus = { path = "../../bit-substrate/primitives/consensus/common", package = "sp-consensus" }
+sc-consensus = { path = "../../bit-substrate/client/consensus/common", package = "sc-consensus" }
+sc-finality-grandpa = { path = "../../bit-substrate/client/finality-grandpa", package = "sc-finality-grandpa" }
+sp-finality-grandpa = { path = "../../bit-substrate/primitives/finality-grandpa", package = "sp-finality-grandpa" }
+sc-client-api = { path = "../../bit-substrate/client/api", package = "sc-client-api" }
+sp-runtime = { path = "../../bit-substrate/primitives/runtime", package = "sp-runtime" }
+sp-timestamp = { path = "../../bit-substrate/primitives/timestamp", package = "sp-timestamp" }
 
 # These dependencies are used for the node's RPCs
 jsonrpc-core = "18.0.0"
-sc-rpc = { git = "https://github.com/paritytech/substrate", package = "sc-rpc" }
-sp-api = { git = "https://github.com/paritytech/substrate", package = "sp-api" }
-sc-rpc-api = { git = "https://github.com/paritytech/substrate", package = "sc-rpc-api" }
-sp-blockchain = { git = "https://github.com/paritytech/substrate", package = "sp-blockchain" }
-sp-block-builder = { git = "https://github.com/paritytech/substrate", package = "sp-block-builder" }
-sc-basic-authorship = { git = "https://github.com/paritytech/substrate", package = "sc-basic-authorship" }
-substrate-frame-rpc-system = { git = "https://github.com/paritytech/substrate", package = "substrate-frame-rpc-system" }
-pallet-transaction-payment-rpc = { git = "https://github.com/paritytech/substrate", package = "pallet-transaction-payment-rpc" }
-pallet-contracts-rpc = { git = "https://github.com/paritytech/substrate", package = "pallet-contracts-rpc" }
+sc-rpc = { path = "../../bit-substrate/client/rpc", package = "sc-rpc" }
+sp-api = { path = "../../bit-substrate/primitives/api", package = "sp-api" }
+sc-rpc-api = { path = "../../bit-substrate/client/rpc-api", package = "sc-rpc-api" }
+sp-blockchain = { path = "../../bit-substrate/primitives/blockchain", package = "sp-blockchain" }
+sp-block-builder = { path = "../../bit-substrate/primitives/block-builder", package = "sp-block-builder" }
+sc-basic-authorship = { path = "../../bit-substrate/client/basic-authorship", package = "sc-basic-authorship" }
+substrate-frame-rpc-system = { path = "../../bit-substrate/utils/frame/rpc/system", package = "substrate-frame-rpc-system" }
+pallet-transaction-payment-rpc = { path = "../../bit-substrate/frame/transaction-payment/rpc", package = "pallet-transaction-payment-rpc" }
+pallet-contracts-rpc = { path = "../../bit-substrate/frame/contracts/rpc", package = "pallet-contracts-rpc" }
 
 # These dependencies are used for runtime benchmarking
-frame-benchmarking = { git = "https://github.com/paritytech/substrate", package = "frame-benchmarking" }
-frame-benchmarking-cli = { git = "https://github.com/paritytech/substrate", package = "frame-benchmarking-cli" }
+frame-benchmarking = { path = "../../bit-substrate/frame/benchmarking", package = "frame-benchmarking" }
+frame-benchmarking-cli = { path = "../../bit-substrate/utils/frame/benchmarking-cli", package = "frame-benchmarking-cli" }
 
 contracts-node-runtime = { path = "../runtime" }
 
 [build-dependencies]
-substrate-build-script-utils = { git = "https://github.com/paritytech/substrate", package = "substrate-build-script-utils" }
+substrate-build-script-utils = { path = "../../bit-substrate/utils/build-script-utils", package = "substrate-build-script-utils" }
 
 [features]
 default = []

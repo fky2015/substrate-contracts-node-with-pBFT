@@ -16,44 +16,43 @@ targets = ["x86_64-unknown-linux-gnu"]
 codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
 scale-info = { version = "1.0", default-features = false, features = ["derive"] }
 
-pallet-aura = { git = "https://github.com/paritytech/substrate", package = "pallet-aura", default-features = false }
-pallet-balances = { git = "https://github.com/paritytech/substrate", package = "pallet-balances", default-features = false }
-frame-support = { git = "https://github.com/paritytech/substrate", package = "frame-support", default-features = false }
-pallet-grandpa = { git = "https://github.com/paritytech/substrate", package = "pallet-grandpa", default-features = false }
-pallet-randomness-collective-flip = { git = "https://github.com/paritytech/substrate", package = "pallet-randomness-collective-flip", default-features = false }
-pallet-sudo = { git = "https://github.com/paritytech/substrate", package = "pallet-sudo", default-features = false }
-frame-system = { git = "https://github.com/paritytech/substrate", package = "frame-system", default-features = false }
-pallet-timestamp = { git = "https://github.com/paritytech/substrate", package = "pallet-timestamp", default-features = false }
-pallet-transaction-payment = { git = "https://github.com/paritytech/substrate", package = "pallet-transaction-payment", default-features = false }
-frame-executive = { git = "https://github.com/paritytech/substrate", package = "frame-executive", default-features = false }
-sp-api = { git = "https://github.com/paritytech/substrate", package = "sp-api", default-features = false }
-sp-block-builder = { git = "https://github.com/paritytech/substrate", package = "sp-block-builder", default-features = false }
-sp-consensus-aura = { git = "https://github.com/paritytech/substrate", package = "sp-consensus-aura", default-features = false }
-sp-core = { git = "https://github.com/paritytech/substrate", package = "sp-core", default-features = false }
-sp-inherents = { git = "https://github.com/paritytech/substrate", package = "sp-inherents", default-features = false }
-sp-offchain = { git = "https://github.com/paritytech/substrate", package = "sp-offchain", default-features = false }
-sp-runtime = { git = "https://github.com/paritytech/substrate", package = "sp-runtime", default-features = false }
-sp-session = { git = "https://github.com/paritytech/substrate", package = "sp-session", default-features = false }
-sp-std = { git = "https://github.com/paritytech/substrate", package = "sp-std", default-features = false }
-sp-transaction-pool = { git = "https://github.com/paritytech/substrate", package = "sp-transaction-pool", default-features = false }
-sp-version = { git = "https://github.com/paritytech/substrate", package = "sp-version", default-features = false }
+pallet-balances = { path = "../../bit-substrate/frame/balances", package = "pallet-balances", default-features = false }
+frame-support = { path = "../../bit-substrate/frame/support", package = "frame-support", default-features = false }
+pallet-grandpa = { path = "../../bit-substrate/frame/grandpa", package = "pallet-grandpa", default-features = false }
+pallet-randomness-collective-flip = { path = "../../bit-substrate/frame/randomness-collective-flip", package = "pallet-randomness-collective-flip", default-features = false }
+pallet-sudo = { path = "../../bit-substrate/frame/sudo", package = "pallet-sudo", default-features = false }
+frame-system = { path = "../../bit-substrate/frame/system", package = "frame-system", default-features = false }
+pallet-timestamp = { path = "../../bit-substrate/frame/timestamp", package = "pallet-timestamp", default-features = false }
+pallet-transaction-payment = { path = "../../bit-substrate/frame/transaction-payment", package = "pallet-transaction-payment", default-features = false }
+frame-executive = { path = "../../bit-substrate/frame/executive", package = "frame-executive", default-features = false }
+sp-api = { path = "../../bit-substrate/primitives/api", package = "sp-api", default-features = false }
+sp-block-builder = { path = "../../bit-substrate/primitives/block-builder", package = "sp-block-builder", default-features = false }
+sp-core = { path = "../../bit-substrate/primitives/core", package = "sp-core", default-features = false }
+sp-inherents = { path = "../../bit-substrate/primitives/inherents", package = "sp-inherents", default-features = false }
+sp-offchain = { path = "../../bit-substrate/primitives/offchain", package = "sp-offchain", default-features = false }
+sp-runtime = { path = "../../bit-substrate/primitives/runtime", package = "sp-runtime", default-features = false }
+sp-session = { path = "../../bit-substrate/primitives/session", package = "sp-session", default-features = false }
+sp-std = { path = "../../bit-substrate/primitives/std", package = "sp-std", default-features = false }
+sp-transaction-pool = { path = "../../bit-substrate/primitives/transaction-pool", package = "sp-transaction-pool", default-features = false }
+sp-version = { path = "../../bit-substrate/primitives/version", package = "sp-version", default-features = false }
+sp-finality-grandpa = { path = "../../bit-substrate/primitives/finality-grandpa", package = "sp-finality-grandpa", default-features = false }
 
 # Used for the node's RPCs
-frame-system-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", package = "frame-system-rpc-runtime-api", default-features = false }
-pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", package = "pallet-transaction-payment-rpc-runtime-api", default-features = false }
+frame-system-rpc-runtime-api = { path = "../../bit-substrate/frame/system/rpc/runtime-api", package = "frame-system-rpc-runtime-api", default-features = false }
+pallet-transaction-payment-rpc-runtime-api = { path = "../../bit-substrate/frame/transaction-payment/rpc/runtime-api", package = "pallet-transaction-payment-rpc-runtime-api", default-features = false }
 
 # Used for runtime benchmarking
-frame-benchmarking = { git = "https://github.com/paritytech/substrate", default-features = false, package = "frame-benchmarking", optional = true }
-frame-system-benchmarking = { git = "https://github.com/paritytech/substrate", default-features = false, package = "frame-system-benchmarking", optional = true }
+frame-benchmarking = { path = "../../bit-substrate/frame/benchmarking", default-features = false, package = "frame-benchmarking", optional = true }
+frame-system-benchmarking = { path = "../../bit-substrate/frame/system/benchmarking", default-features = false, package = "frame-system-benchmarking", optional = true }
 hex-literal = { version = "0.3.4", optional = true }
 
 # Contracts specific packages
-pallet-contracts = { git = "https://github.com/paritytech/substrate", package = "pallet-contracts", default-features = false }
-pallet-contracts-primitives = { git = "https://github.com/paritytech/substrate", package = "pallet-contracts-primitives", default-features = false }
-pallet-contracts-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", package = "pallet-contracts-rpc-runtime-api", default-features = false }
+pallet-contracts = { path = "../../bit-substrate/frame/contracts", package = "pallet-contracts", default-features = false }
+pallet-contracts-primitives = { path = "../../bit-substrate/frame/contracts/common", package = "pallet-contracts-primitives", default-features = false }
+pallet-contracts-rpc-runtime-api = { path = "../../bit-substrate/frame/contracts/rpc/runtime-api", package = "pallet-contracts-rpc-runtime-api", default-features = false }
 
 [build-dependencies]
-substrate-wasm-builder =  { git = "https://github.com/paritytech/substrate", package = "substrate-wasm-builder" }
+substrate-wasm-builder =  { path = "../../bit-substrate/utils/wasm-builder", package = "substrate-wasm-builder" }
 
 [features]
 default = [
@@ -68,7 +67,7 @@ std = [
 	"frame-support/std",
 	"frame-system-rpc-runtime-api/std",
 	"frame-system/std",
-	"pallet-aura/std",
+	# "pallet-aura/std",
 	"pallet-balances/std",
 	"pallet-grandpa/std",
 	"pallet-randomness-collective-flip/std",
@@ -78,7 +77,7 @@ std = [
 	"pallet-transaction-payment/std",
 	"sp-api/std",
 	"sp-block-builder/std",
-	"sp-consensus-aura/std",
+	# "sp-consensus-aura/std",
 	"sp-core/std",
 	"sp-inherents/std",
 	"sp-offchain/std",
@@ -90,6 +89,7 @@ std = [
 	"pallet-contracts/std",
 	"pallet-contracts-primitives/std",
 	"pallet-contracts-rpc-runtime-api/std",
+  "sp-finality-grandpa/std",
 ]
 runtime-benchmarks = [
 	"frame-benchmarking/runtime-benchmarks",
