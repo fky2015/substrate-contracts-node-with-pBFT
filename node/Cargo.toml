@@ -1,6 +1,6 @@
 [package]
 name = "contracts-node"
-version = "0.7.0"
+version = "0.15.0"
 authors = ["Parity Technologies <admin@parity.io>"]
 description = "Substrate node configured for smart contracts via `pallet-contracts`."
 edition = "2021"
@@ -18,28 +18,38 @@ name = "substrate-contracts-node"
 path = "src/main.rs"
 
 [dependencies]
-clap = { version = "3.0", features = ["derive"] }
+clap = { version = "3.1.6", features = ["derive"] }
 
-sc-cli = { path = "../../bit-substrate/client/cli", package = "sc-cli", features = ["wasmtime"] }
+sc-cli = { path = "../../bit-substrate/client/cli", package = "sc-cli", features = [
+  "wasmtime",
+] }
 sp-core = { path = "../../bit-substrate/primitives/core", package = "sp-core" }
-sc-executor = { path = "../../bit-substrate/client/executor", package = "sc-executor", features = ["wasmtime"] }
-sc-service = { path = "../../bit-substrate/client/service", package = "sc-service", features = ["wasmtime"] }
+sc-executor = { path = "../../bit-substrate/client/executor", package = "sc-executor", features = [
+  "wasmtime",
+] }
+sc-service = { path = "../../bit-substrate/client/service", package = "sc-service", features = [
+  "wasmtime",
+] }
 sc-telemetry = { path = "../../bit-substrate/client/telemetry", package = "sc-telemetry" }
 sc-keystore = { path = "../../bit-substrate/client/keystore", package = "sc-keystore" }
 sp-inherents = { path = "../../bit-substrate/primitives/inherents", package = "sp-inherents" }
 sc-transaction-pool = { path = "../../bit-substrate/client/transaction-pool", package = "sc-transaction-pool" }
 sc-transaction-pool-api = { path = "../../bit-substrate/client/transaction-pool/api", package = "sc-transaction-pool-api" }
-sc-consensus-aura = { path = "../../bit-substrate/client/consensus/aura", package = "sc-consensus-aura" }
 sp-consensus = { path = "../../bit-substrate/primitives/consensus/common", package = "sp-consensus" }
 sc-consensus = { path = "../../bit-substrate/client/consensus/common", package = "sc-consensus" }
-sc-finality-grandpa = { path = "../../bit-substrate/client/finality-grandpa", package = "sc-finality-grandpa" }
-sp-finality-grandpa = { path = "../../bit-substrate/primitives/finality-grandpa", package = "sp-finality-grandpa" }
 sc-client-api = { path = "../../bit-substrate/client/api", package = "sc-client-api" }
 sp-runtime = { path = "../../bit-substrate/primitives/runtime", package = "sp-runtime" }
 sp-timestamp = { path = "../../bit-substrate/primitives/timestamp", package = "sp-timestamp" }
+sp-keyring = { path = "../../bit-substrate/primitives/keyring", package = "sp-keyring" }
+frame-system = { path = "../../bit-substrate/frame/system/", package = "frame-system" }
+pallet-transaction-payment = { path = "../../bit-substrate/frame/transaction-payment", package = "pallet-transaction-payment" }
+sp-consensus-aura = { path = "../../bit-substrate/primitives/consensus/aura", package = "sp-consensus-aura" }
+sc-consensus-aura = { path = "../../bit-substrate/client/consensus/aura", package = "sc-consensus-aura" }
+sc-finality-pbft = { path = "../../bit-substrate/client/finality-pbft", package = "sc-finality-pbft" }
+sp-finality-pbft = { path = "../../bit-substrate/primitives/finality-pbft", package = "sp-finality-pbft" }
 
 # These dependencies are used for the node's RPCs
-jsonrpc-core = "18.0.0"
+jsonrpsee = { version = "0.13.0", features = ["server"] }
 sc-rpc = { path = "../../bit-substrate/client/rpc", package = "sc-rpc" }
 sp-api = { path = "../../bit-substrate/primitives/api", package = "sp-api" }
 sc-rpc-api = { path = "../../bit-substrate/client/rpc-api", package = "sc-rpc-api" }
@@ -54,13 +64,18 @@ pallet-contracts-rpc = { path = "../../bit-substrate/frame/contracts/rpc", packa
 frame-benchmarking = { path = "../../bit-substrate/frame/benchmarking", package = "frame-benchmarking" }
 frame-benchmarking-cli = { path = "../../bit-substrate/utils/frame/benchmarking-cli", package = "frame-benchmarking-cli" }
 
+# Local Dependencies
 contracts-node-runtime = { path = "../runtime" }
+
+# CLI-specific dependencies
+try-runtime-cli = { git = "https://github.com/paritytech/substrate", package = "try-runtime-cli", optional = true }
 
 [build-dependencies]
 substrate-build-script-utils = { path = "../../bit-substrate/utils/build-script-utils", package = "substrate-build-script-utils" }
 
 [features]
 default = []
-runtime-benchmarks = [
-	"contracts-node-runtime/runtime-benchmarks",
-]
+runtime-benchmarks = ["contracts-node-runtime/runtime-benchmarks"]
+# Enable features that allow the runtime to be tried and debugged. Name might be subject to change
+# in the near future.
+try-runtime = ["contracts-node-runtime/try-runtime", "try-runtime-cli"]

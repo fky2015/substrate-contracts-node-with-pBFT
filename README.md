@@ -6,7 +6,35 @@ configured to include Substrate's [`pallet-contracts`](https://github.com/parity
 
 This repository is tracking Substrate's `master`.
 
+_It contains a couple of modifications that make it unsuitable for a
+production deployment, but a great fit for development and testing:_
+
+* The unstable features of the [`pallet-contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts)
+  are enabled by default (see the [`runtime/Cargo.toml`](https://github.com/paritytech/substrate-contracts-node/blob/main/runtime/Cargo.toml)).
+* The consensus algorithm has been switched to `manual-seal` in
+  [#42](https://github.com/paritytech/substrate-contracts-node/pull/42).
+  Hereby blocks are authored immediately at every transaction, so there
+  is none of the typical six seconds block time associated with `grandpa` or `aura`.
+* _If no CLI arguments are passed the node is started in development mode
+  by default._
+* _With each start of the node process the chain starts from genesis ‒ so no
+  chain state is retained, all contracts will be lost! If you want to retain
+  chain state you have to supply a `--base-path`._
+
+If you are looking for a node suitable for production see these configurations:
+
+* [Substrate Node Template](https://github.com/paritytech/substrate/tree/master/bin/node-template)
+* [Substrate Cumulus Parachain Template](https://github.com/paritytech/cumulus/tree/master/parachain-template)
+* [Canvas Parachain Configuration for Rococo](https://github.com/paritytech/cumulus/tree/master/polkadot-parachains/canvas-kusama)
+
 ## Installation
+
+### Download Binary
+
+The easiest way is to download a binary release from [our releases page](https://github.com/paritytech/substrate-contracts-node/releases)
+and just execute `./substrate-contracts-node --dev`.
+
+### Build Locally
 
 Follow the [official installation steps](https://docs.substrate.io/v3/getting-started/installation/)
 to set up all Substrate prerequisites.
@@ -22,7 +50,7 @@ as the `Cargo.lock` in those repositories ‒ ensuring that the last
 known-to-work version of the dependencies are used.
 
 The latest confirmed working Substrate commit which will then be used is
-[c22fce5a311beede13479c9a00cca85d823b6b00](https://github.com/paritytech/substrate/tree/c22fce5a311beede13479c9a00cca85d823b6b00).
+[7d233c2446b5a60662400a0a4bcfb78bb3b79ff7](https://github.com/paritytech/substrate/tree/7d233c2446b5a60662400a0a4bcfb78bb3b79ff7).
 
 ## Usage
 
