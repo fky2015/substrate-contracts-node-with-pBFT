@@ -7,4 +7,4 @@ members = [
 panic = 'unwind'
 
 [patch.crates-io]
-finality-grandpa = {path = "../leader-consensus"}
+finality-grandpa = {path = "../finality-pbft"}
