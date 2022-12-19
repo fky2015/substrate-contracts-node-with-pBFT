@@ -9,7 +9,8 @@ This repo implement PBFT as an alternative to GRANDPA.
 
 ```bash
 git clone https://github.com/fky2015/finality-pbft.git
-git clone https://github.com/fky2015/substrate-with-pBFT-and-tendermint.git
+# plase rename the repo to `bit-substrate`.
+git clone https://github.com/fky2015/substrate-with-pBFT-and-tendermint.git bit-substrate
 git clone https://github.com/fky2015/substrate-contracts-node-with-pBFT.git
 ```
 
