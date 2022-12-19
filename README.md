@@ -9,8 +9,8 @@ This repo implement PBFT as an alternative to GRANDPA.
 
 ```bash
 git clone https://github.com/fky2015/finality-pbft.git
-git clone https://github.com/fky2015/substrate-with-pBFT
-git clone https://github.com/fky2015/substrate-contracts-node-with-pBFT
+git clone https://github.com/fky2015/substrate-with-pBFT-and-tendermint.git
+git clone https://github.com/fky2015/substrate-contracts-node-with-pBFT.git
 ```
 
 3. Build.
@@ -30,7 +30,7 @@ cargo build -p substrate-contracts-node
 
 This is campatible to Substrate Contracts Node v0.15.1, May 12th, 2022.
 
-For the PBFT implementation details, please visit [finality-pbft](https://github.com/fky2015/finality-pbft) and [substrate-with-pBFT](https://github.com/fky2015/substrate-with-pBFT).
+For the PBFT implementation details, please visit [finality-pbft](https://github.com/fky2015/finality-pbft) and [substrate-with-pBFT](https://github.com/fky2015/substrate-with-pBFT-and-tendermint).
 
 
 *In below is the original README.*
